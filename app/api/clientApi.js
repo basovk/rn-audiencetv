@@ -2,7 +2,7 @@ import axios from 'axios'
 import * as SecureStore from 'expo-secure-store'
 
 const clientApi = axios.create({
-  baseURL: 'http://192.168.43.254:5000/api'
+  baseURL: 'http://192.168.0.37:5000/api'
 })
 
 const key = 'authToken'
@@ -81,8 +81,33 @@ const getProgramsWithShows = async () => {
   }
 }
 
+const userWatchedShow = async (showId, authToken) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    }
+
+    const { data } = await clientApi.put(`/shows/${showId}`, null, config)
+
+    return data
+  } catch (error) {
+    return error.response && error.response.data.error
+      ? error.response.data.error
+      : error.message
+  }
+}
+
 const logout = async () => {
   await SecureStore.deleteItemAsync(key)
 }
 
-export default { register, login, logout, getUser, getProgramsWithShows }
+export default {
+  register,
+  login,
+  logout,
+  getUser,
+  getProgramsWithShows,
+  userWatchedShow
+}

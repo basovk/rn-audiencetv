@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Image } from 'react-native'
 import * as Yup from 'yup'
 
@@ -7,10 +7,10 @@ import ErrorForm from '../components/forms/ErrorForm'
 import AppForm from '../components/forms/AppForm'
 import AppFormEntry from '../components/forms/AppFormEntry'
 import SubmitFormButton from '../components/forms/SubmitFormButton'
+import colors from '../config/colors'
 
 import clientApi from '../api/clientApi'
 import useAuth from '../auth/useAuth'
-import colors from '../config/colors'
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),

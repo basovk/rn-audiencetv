@@ -1,10 +1,17 @@
 import React from 'react'
 import { StyleSheet, View, TouchableWithoutFeedback, Image } from 'react-native'
 
-import colors from '../config/colors'
 import AppText from './AppText'
+import colors from '../config/colors'
 
-export default function CardItem({ name, title, subTitle, imageUrl, onPress }) {
+export default function CardItem({
+  name,
+  id,
+  title,
+  subTitle,
+  imageUrl,
+  onPress
+}) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>

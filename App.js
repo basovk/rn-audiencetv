@@ -1,20 +1,13 @@
 import React, { useState } from 'react'
-import { StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import AppLoading from 'expo-app-loading'
 
-import WelcomeScreen from './app/screens/WelcomeScreen'
-import ProgramsScreen from './app/screens/ProgramsScreen'
-import AccountScreen from './app/screens/AccountScreen'
-import LoginScreen from './app/screens/LoginScreen'
-import RegisterScreen from './app/screens/RegisterScreen'
-
 import AuthContext from './app/auth/context'
 import authStorage from './app/auth/storage'
+import clientApi from './app/api/clientApi'
 
 import AuthNavigator from './app/navigation/AuthNavigator'
 import AppNavigator from './app/navigation/AppNavigator'
-import clientApi from './app/api/clientApi'
 import navTheme from './app/navigation/navTheme'
 
 export default function App() {
@@ -48,5 +41,3 @@ export default function App() {
     </AuthContext.Provider>
   )
 }
-
-const styles = StyleSheet.create({})

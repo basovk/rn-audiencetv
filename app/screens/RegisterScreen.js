@@ -30,7 +30,7 @@ function RegisterScreen() {
   const [show, setShow] = useState(false)
   const [birthdate, setBirthdate] = useState(new Date(2001, 10, 11))
   const [gender, setGender] = useState('')
-  const { login, logOut } = useAuth()
+  const { login } = useAuth()
   const [error, setError] = useState()
 
   const handleDate = () => {

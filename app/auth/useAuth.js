@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-import jwtDecode from 'jwt-decode'
 
 import clientApi from '../api/clientApi'
 
