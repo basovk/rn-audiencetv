@@ -3,6 +3,9 @@ import * as Notifications from 'expo-notifications'
 import { useEffect } from 'react'
 import { Platform } from 'react-native'
 
+import clientApi from '../api/clientApi'
+import authStorage from '../auth/storage'
+
 export default useNotifications = () => {
   useEffect(() => {
     registerForPushNotificationsAsync()
@@ -28,7 +31,13 @@ export default useNotifications = () => {
 
       const token = (await Notifications.getExpoPushTokenAsync()).data
       console.log(token)
-      // this.setState({ expoPushToken: token })
+      // store the token to the database
+      const authToken = await authStorage.getToken()
+
+      // store expo push token for this user and sign up for notifications
+      await clientApi.storeExpoPushToken(token, authToken)
+
+      // send the notification or from server
     } else {
       alert('You need to use physical device for Push Notifications')
     }

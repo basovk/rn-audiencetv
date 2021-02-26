@@ -35,7 +35,8 @@
     "yup": "^0.32.8",
     "@react-native-picker/picker": "1.9.2",
     "expo-location": "~10.0.0",
-    "expo-task-manager": "~8.6.0"
+    "expo-task-manager": "~8.6.0",
+    "expo-notifications": "~0.8.2"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

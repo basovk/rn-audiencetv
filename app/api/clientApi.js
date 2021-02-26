@@ -99,6 +99,28 @@ const userWatchedShow = async (showId, authToken) => {
   }
 }
 
+const storeExpoPushToken = async (expoPushToken, authToken) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    }
+
+    const { data } = await clientApi.put(
+      `/auth/expoPushToken`,
+      { expoPushToken },
+      config
+    )
+
+    return data
+  } catch (error) {
+    return error.response && error.response.data.error
+      ? error.response.data.error
+      : error.message
+  }
+}
+
 const logout = async () => {
   await SecureStore.deleteItemAsync(key)
 }
@@ -109,5 +131,6 @@ export default {
   logout,
   getUser,
   getProgramsWithShows,
-  userWatchedShow
+  userWatchedShow,
+  storeExpoPushToken
 }
