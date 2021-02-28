@@ -16,7 +16,6 @@ export default function App() {
   const [user, setUser] = useState()
   const [isReady, setIsReady] = useState(false)
 
-  /*
   const scheduledNotifications = async () => {
     Notifications.setNotificationHandler({
       handleNotification: async () => ({
@@ -26,38 +25,34 @@ export default function App() {
       })
     })
 
-    const oneDayTrigger = 86400
-
-    // 18:00
-
-    
-    Notifications.scheduleNotificationAsync({
+    await Notifications.scheduleNotificationAsync({
       content: {
         title: 'Are you watching TV right now?',
         body: 'Let us know!'
       },
       trigger: {
-        seconds: oneDayTrigger,
-        repeats: true
+        repeats: true,
+        hour: 20,
+        minute: 0
       }
     })
 
-    // 20:00
-
-    Notifications.scheduleNotificationAsync({
+    await Notifications.scheduleNotificationAsync({
       content: {
         title: 'Are you watching TV right now?',
         body: 'Let us know!'
       },
       trigger: {
-        seconds: oneDayTrigger
+        repeats: true,
+        hour: 18,
+        minute: 0
       }
     })
   }
 
   useEffect(() => {
     scheduledNotifications()
-  }, [scheduledNotifications]) */
+  }, [scheduledNotifications])
 
   const restoreUser = async () => {
     const token = await authStorage.getToken()
